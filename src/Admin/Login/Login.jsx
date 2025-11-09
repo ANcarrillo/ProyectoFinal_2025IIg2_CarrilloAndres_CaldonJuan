@@ -2,27 +2,41 @@ import { React, useState, useEffect } from "react";
 import { LoginUserEmailPassword } from "../../Data/Login";
 import "./Login.css";
 import FactoryIcon from "@mui/icons-material/Factory";
+import { db } from "../../Data/config";
+import { collection, doc, setDoc, getDoc } from "firebase/firestore";
 
 const Login = () => {
   const [credencials, setCredencials] = useState({
     email: "",
     password: "",
+    rol: "",
   });
 
-  const autenticacion = (e) => {
-    e.preventDefault();
-    LoginUserEmailPassword(credencials.email, credencials.password)
-      .then((user) => {
-        console.log("Usuario autenticado:", user);
-        setCredencials({
-          email: "",
-          password: "",
-        });
-      })
-      .catch((error) => {
-        console.error("Error al iniciar sesión:", error.errorMessage);
-      });
+  const searchRole = async (udi) => {
+    const docRef = doc(db, `Usuarios/${udi}`);
+    const docSnap = await getDoc(docRef);
+    const ususario = docSnap.data().Rol;
+    return ususario;
   };
+
+  const autenticacion = async (e) => {
+    e.preventDefault();
+    try {
+      const user = await LoginUserEmailPassword(
+        credencials.email,
+        credencials.password
+      );
+      console.log("Usuario autenticado:", user.email);
+
+      const rol = await searchRole(user.uid);
+      setCredencials((prev) => ({ ...prev, rol }));
+
+      console.log("Rol del usuario:", rol);
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error.errorMessage);
+    }
+  };
+
   return (
     <div>
       <div className="contenedorLogin">
