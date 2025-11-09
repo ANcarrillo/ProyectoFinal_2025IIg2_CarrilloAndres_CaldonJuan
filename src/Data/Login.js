@@ -3,6 +3,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  signOut,
 } from "firebase/auth";
 
 export const LoginUserEmailPassword = (email, password) => {
@@ -25,4 +26,15 @@ export const LoginUserGoogle = () => {
     }));
 };
 
-
+export const LogoutUser = () => {
+  return signOut(auth)
+    .then(() => {
+      console.log("Sesión cerrada correctamente ✅");
+    })
+    .catch((error) =>
+      Promise.reject({
+        errorCode: error.code,
+        errorMessage: error.message,
+      })
+    );
+  };
