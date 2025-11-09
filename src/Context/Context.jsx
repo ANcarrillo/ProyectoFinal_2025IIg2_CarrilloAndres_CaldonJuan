@@ -32,9 +32,29 @@ export const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
+
+const logout = async () => {
+    try {
+      await auth.signOut();
+      setUser(null);
+      setRole(null);
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+      throw error;
+    }
+  };
+
+  const value = {
+    user,
+    role,
+    loading,
+    logout,
+    isAuthenticated: !!user
+  };
+
   return (
-    <AuthContext.Provider value={{ user, role, loading }}>
-      {children}
+    <AuthContext.Provider value={value}>
+      {!loading && children}
     </AuthContext.Provider>
   );
 };

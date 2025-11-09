@@ -44,7 +44,6 @@ const Login = () => {
       } else {
         alert("Aún no se conecta la respectiva página para este rol");
       }
-
     } catch (error) {
       console.error("Error al iniciar sesión:", error.message);
       alert("Error al iniciar sesión. Verifica tus credenciales.");
@@ -53,30 +52,51 @@ const Login = () => {
 
   return (
     <div className="contenedorLogin">
-      <h2>LOGIN</h2>
-      <FactoryIcon />
-      <form onSubmit={autenticacion}>
-        <input
-          type="email"
-          placeholder="User@example.com"
-          value={credencials.email}
-          onChange={(e) =>
-            setCredencials((prev) => ({ ...prev, email: e.target.value }))
-          }
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={credencials.password}
-          onChange={(e) =>
-            setCredencials((prev) => ({ ...prev, password: e.target.value }))
-          }
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
-      <h4>¿Deseas formar parte de nosotros? Mándanos tu solicitud</h4>
+      <div className="login-card">
+        <div className="login-header">
+          <div className="icon-container">
+            <FactoryIcon />
+          </div>
+          <h2>Bienvenido</h2>
+        </div>
+
+        <form className="login-form" onSubmit={autenticacion}>
+          <div className="input-group">
+            <input
+              type="email"
+              placeholder="Correo electrónico"
+              value={credencials.email}
+              onChange={(e) =>
+                setCredencials((prev) => ({ ...prev, email: e.target.value }))
+              }
+              required
+            />
+          </div>
+
+          <div className="input-group">
+            <input
+              type="password"
+              placeholder="Contraseña"
+              value={credencials.password}
+              onChange={(e) =>
+                setCredencials((prev) => ({ ...prev, password: e.target.value }))
+              }
+              required
+            />
+          </div>
+
+          <button type="submit" className="login-button">
+            Iniciar Sesión
+          </button>
+        </form>
+
+        <div className="login-footer">
+          <h4>
+            ¿Deseas formar parte de nosotros?<br />
+            <a href="#solicitud">Mándanos tu solicitud</a>
+          </h4>
+        </div>
+      </div>
     </div>
   );
 };

@@ -26,7 +26,7 @@ const NavReportero = () => {
       sx={{
         width: "100%",
         height: "100vh",
-        backgroundColor: "#102847",
+        backgroundColor: "#0a3d62",
         color: "white",
         display: "flex",
         flexDirection: "column",
