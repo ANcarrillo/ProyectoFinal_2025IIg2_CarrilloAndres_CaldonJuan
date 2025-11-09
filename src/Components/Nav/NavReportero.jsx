@@ -50,39 +50,26 @@ const NavReportero = () => {
         <Divider sx={{ backgroundColor: "white", opacity: 0.3 }} />
         <br />
 
-        <ListItemButton
-          sx={{
-            "&:hover": { backgroundColor: "#1a3a6b" },
-          }}
+        <Link
+          to={"/reportero/Historial"}
+          style={{ textDecoration: "none", color: "inherit" }}
         >
-          <ListItemIcon sx={{ color: "white", minWidth: 40 }}>
-            <ApartmentIcon sx={{ fontSize: 30 }} />
-          </ListItemIcon>
-          <ListItemText primary="Inicio" />
-        </ListItemButton>
-
-        <ListItemButton
-          sx={{
-            "&:hover": { backgroundColor: "#1a3a6b" },
-          }}
+          <ListItemButton
+            sx={{
+              "&:hover": { backgroundColor: "#1a3a6b" },
+              textDecoration: "n",
+            }}
+          >
+            <ListItemIcon sx={{ color: "white", minWidth: 40 }}>
+              <ManageSearchIcon sx={{ fontSize: 30 }} />
+            </ListItemIcon>
+            <ListItemText primary="Historial" />
+          </ListItemButton>
+        </Link>
+        <Link
+          to={"/reportero/CrearNoticia"}
+          style={{ textDecoration: "none", color: "inherit" }}
         >
-          <ListItemIcon sx={{ color: "white", minWidth: 40 }}>
-            <PublicIcon sx={{ fontSize: 30 }} />
-          </ListItemIcon>
-          <ListItemText primary="Publicaciones" />
-        </ListItemButton>
-
-        <ListItemButton
-          sx={{
-            "&:hover": { backgroundColor: "#1a3a6b" },
-          }}
-        >
-          <ListItemIcon sx={{ color: "white", minWidth: 40 }}>
-            <ManageSearchIcon sx={{ fontSize: 30 }} />
-          </ListItemIcon>
-          <ListItemText primary="Historial" />
-        </ListItemButton>
-        <Link to={"/reportero/CrearNoticia"}>
           <ListItemButton
             sx={{
               "&:hover": { backgroundColor: "#1a3a6b" },

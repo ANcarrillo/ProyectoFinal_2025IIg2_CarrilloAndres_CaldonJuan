@@ -1,10 +1,14 @@
-import React, { useState } from "react";
-import "./CrearNoticia.css";
-import { enviarRevision } from "../../Data/Noticias"; // tu función para Firestore
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { obtenerNoticiaPorId, actualizarNoticia } from "../../Data/Noticias";
 import { useAuth } from "../../Context/Context";
+import "./CrearNoticia.css";
 
-const CrearNoticia = () => {
+const EditarNoticia = () => {
+  const { id } = useParams(); // id de la noticia
+  const navigate = useNavigate();
   const { user } = useAuth();
+
   const [noticia, setNoticia] = useState({
     titulo: "",
     subtitulo: "",
@@ -12,51 +16,47 @@ const CrearNoticia = () => {
     contenido: "",
     categoria: "tecnologia",
     url: "",
-    autor: user?.uid,
     estado: "En Revision",
   });
 
+  useEffect(() => {
+    const cargarNoticia = async () => {
+      try {
+        const data = await obtenerNoticiaPorId(id);
+        if (data) setNoticia(data);
+      } catch (error) {
+        console.error("Error cargando noticia:", error);
+      }
+    };
+    cargarNoticia();
+  }, [id]);
+
   const handleChange = (e) => {
     const { id, value } = e.target;
-    setNoticia((prev) => ({
-      ...prev,
-      [id]: value,
-    }));
+    setNoticia((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleSubmit = async (e, estado) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const noticiaConAutor = { ...noticia, autor: user?.uid, estado };
-      await enviarRevision(noticiaConAutor);
-      alert(
-        estado === "Borrador"
-          ? "Noticia guardada como borrador 😊"
-          : "Noticia enviada correctamente 😊"
-      );
-      setNoticia({
-        titulo: "",
-        subtitulo: "",
-        descripcion: "",
-        contenido: "",
-        categoria: "tecnologia",
-        url: "",
-      });
+      noticia.estado="En Revision";
+      await actualizarNoticia(id, noticia);
+      alert("Noticia actualizada correctamente 😊");
+      navigate("/reportero/Historial"); // regresar al historial
     } catch (error) {
       console.error(error);
-      alert("Error al guardar la noticia ❌");
+      alert("Error al actualizar la noticia ❌");
     }
   };
 
   return (
     <main className="mainCrearNoticia">
-      <h2>Muestranos tu idea 😊</h2>
+      <h2>Editar Noticia</h2>
       <div className="formularioNoticia">
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="titulo">Titulo</label>
           <input
             type="text"
-            placeholder="Titulo de tu obra"
             id="titulo"
             value={noticia.titulo}
             onChange={handleChange}
@@ -67,7 +67,6 @@ const CrearNoticia = () => {
           <input
             type="text"
             id="subtitulo"
-            placeholder="Un subtitulo descriptivo"
             value={noticia.subtitulo}
             onChange={handleChange}
           />
@@ -76,7 +75,6 @@ const CrearNoticia = () => {
           <input
             type="text"
             id="descripcion"
-            placeholder="Describenos tu obra"
             value={noticia.descripcion}
             onChange={handleChange}
           />
@@ -84,12 +82,11 @@ const CrearNoticia = () => {
           <label htmlFor="contenido">Contenido</label>
           <textarea
             id="contenido"
-            placeholder="Muestranos tu investigacion"
             value={noticia.contenido}
             onChange={handleChange}
-          ></textarea>
+          />
 
-          <label htmlFor="categoria">Categoría:</label>
+          <label htmlFor="categoria">Categoría</label>
           <select
             id="categoria"
             value={noticia.categoria}
@@ -103,36 +100,20 @@ const CrearNoticia = () => {
             <option value="negocio">Negocio</option>
           </select>
 
-          <label htmlFor="url">Enlace relacionado:</label>
+          <label htmlFor="url">Enlace relacionado</label>
           <input
             type="url"
             id="url"
-            placeholder="https://ejemplo.com"
             value={noticia.url}
             onChange={handleChange}
             required
           />
 
-          <div className="botones">
-            <button
-              type="button"
-              className="guardar"
-              onClick={(e) => handleSubmit(e, "Borrador")}
-            >
-              Guardar Borrador
-            </button>
-
-            <button
-              type="button"
-              onClick={(e) => handleSubmit(e, "En Revision")}
-            >
-              Enviar revisión
-            </button>
-          </div>
+          <button type="submit">Actualizar Noticia</button>
         </form>
       </div>
     </main>
   );
 };
 
-export default CrearNoticia;
+export default EditarNoticia;

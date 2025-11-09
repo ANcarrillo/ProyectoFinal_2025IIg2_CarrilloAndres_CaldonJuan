@@ -8,10 +8,8 @@
 
 .navReportero{
     grid-area: nav;
-    border: solid;
 }
 #container{
     grid-area: main;
-    border: solid blue;
     overflow-y: auto;
 }

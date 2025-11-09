@@ -86,3 +86,11 @@
     font-size: 0.95rem;
   }
 }
+.botones{
+    justify-content: end;
+    display: flex;
+    gap: 20px;
+    .guardar{
+        background-color: #34495e;
+    }
+}
