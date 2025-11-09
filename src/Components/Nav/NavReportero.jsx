@@ -82,7 +82,7 @@ const NavReportero = () => {
           </ListItemIcon>
           <ListItemText primary="Historial" />
         </ListItemButton>
-        <Link to={"/CrearNoticia"}>
+        <Link to={"/reportero/CrearNoticia"}>
           <ListItemButton
             sx={{
               "&:hover": { backgroundColor: "#1a3a6b" },

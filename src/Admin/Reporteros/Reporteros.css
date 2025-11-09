@@ -13,6 +13,5 @@
 #container{
     grid-area: main;
     border: solid blue;
-     height: 100%; /* ocupa todo el espacio restante */
     overflow-y: auto;
 }

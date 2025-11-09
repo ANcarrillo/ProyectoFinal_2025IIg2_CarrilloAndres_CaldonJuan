@@ -3,17 +3,16 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavReportero from "../../Components/Nav/NavReportero";
 import "../Reporteros/Reporteros.css";
 import { useAuth } from "../../Context/Context";
-import CrearNoticia from "../../Pages/CrearNoticia"
-
+import CrearNoticia from "../../Pages/CrearNoticia/CrearNoticia";
 
 const Reportero = () => {
   const { user, role, loading } = useAuth();
   return (
     <div id="containerpages">
+      
       <div id="container">
-        <h2>{user?.email}</h2>
         <Routes>
-          <Route path="/CrearNoticia" element={<CrearNoticia/>} />
+          <Route path="CrearNoticia" element={<CrearNoticia />} />
         </Routes>
       </div>
 

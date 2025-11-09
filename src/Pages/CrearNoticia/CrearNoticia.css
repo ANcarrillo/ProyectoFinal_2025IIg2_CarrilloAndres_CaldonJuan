@@ -1,0 +1,88 @@
+
+.mainCrearNoticia {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Título */
+.mainCrearNoticia h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+/* Formulario */
+.formularioNoticia form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Etiquetas */
+.formularioNoticia label {
+  font-weight: 600;
+  color: #34495e;
+  margin-bottom: 0.3rem;
+}
+
+/* Inputs y textarea */
+.formularioNoticia input,
+.formularioNoticia textarea,
+.formularioNoticia select {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.formularioNoticia input:focus,
+.formularioNoticia textarea:focus,
+.formularioNoticia select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Textarea más alto */
+.formularioNoticia textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* Botón */
+.formularioNoticia button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.9rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formularioNoticia button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .mainCrearNoticia {
+    padding: 1rem;
+  }
+
+  .formularioNoticia input,
+  .formularioNoticia textarea,
+  .formularioNoticia select {
+    font-size: 0.95rem;
+  }
+
+  .formularioNoticia button {
+    font-size: 0.95rem;
+  }
+}

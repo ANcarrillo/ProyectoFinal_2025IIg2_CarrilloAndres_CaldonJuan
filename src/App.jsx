@@ -15,7 +15,7 @@ function App() {
             <div id="container">
               <Routes>
                 <Route path="/login" element={<Login />} />
-                <Route path="/reportero" element={<Reportero />} />
+                <Route path="/reportero/*" element={<Reportero />} />
               </Routes>
             </div>
           </div>
