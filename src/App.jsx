@@ -10,6 +10,7 @@ import NotFound from "./Components/NotFound/NotFound";
 import Categoria from "./Pages/Categoria";
 import { AuthProvider } from "./Context/Context";
 import Editor from "./Admin/Editor/Editor"
+import NoticiaIndividual from "./Pages/NoticiaIndividual/NoticiaIndividual"
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/categoria/:nombreCategoria" element={<Categoria />} />
                 <Route path="/" element={<Main />} />
                 <Route path="*" element={<NotFound />} />
+                <Route path="/noticia/:id" element={<NoticiaIndividual />} />
               </Routes>
             </div>
           </div>
