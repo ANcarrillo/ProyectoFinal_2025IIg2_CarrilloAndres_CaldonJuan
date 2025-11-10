@@ -16,11 +16,18 @@
   font-weight: bold;
   letter-spacing: 1px;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
+.logo:hover {
+  color: #ffda79;
+}
+
+/* ===== Menú (modo PC) ===== */
 .nav ul {
   list-style: none;
   display: flex;
+  align-items: center;
   gap: 25px;
   margin: 0;
   padding: 0;
@@ -31,8 +38,66 @@
   color: #f1f1f1;
   font-weight: 500;
   transition: color 0.3s ease;
+  cursor: pointer;
 }
 
 .nav a:hover {
   color: #ffda79;
+}
+
+.user-email {
+  font-size: 0.95rem;
+  color: #ffda79;
+  font-weight: 600;
+}
+
+/* ===== Botón menú hamburguesa ===== */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* ===== MODO MÓVIL ===== */
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+    padding: 15px 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    width: 100%;
+    background-color: #0a3d62;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .nav.open {
+    max-height: 500px; /* se expande el menú */
+  }
+
+  .nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+  }
+
+  .nav a {
+    font-size: 1.1rem;
+  }
+}
+
+/* ===== PC ===== */
+@media (min-width: 769px) {
+  .nav {
+    max-height: none;
+  }
 }

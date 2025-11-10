@@ -8,9 +8,10 @@ import Main from "./Components/Main/Main";
 import Footer from "./Components/Footer/Footer";
 import NotFound from "./Components/NotFound/NotFound";
 import Categoria from "./Pages/Categoria";
-import { AuthProvider } from "./Context/Context";
 import Editor from "./Admin/Editor/Editor"
+import { AuthProvider } from "./Context/Context";
 import NoticiaIndividual from "./Pages/NoticiaIndividual/NoticiaIndividual"
+
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <>
+
       <AuthProvider>
         <Router>
           <Header />
@@ -31,6 +33,7 @@ function App() {
                 <Route path="/" element={<Main />} />
                 <Route path="*" element={<NotFound />} />
                 <Route path="/noticia/:id" element={<NoticiaIndividual />} />
+
               </Routes>
             </div>
           </div>

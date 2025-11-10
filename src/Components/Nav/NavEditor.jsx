@@ -23,7 +23,7 @@ const NavEditor = () => {
     <Box
       sx={{
         width: "100%",
-        height: "100vh",
+        height: "86.4vh",
         backgroundColor: "#102847",
         color: "white",
         display: "flex",
@@ -49,7 +49,7 @@ const NavEditor = () => {
         <br />
 
         <Link
-          to={"/reportero/Historial"}
+          to={"/editor/Historial"}
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <ListItemButton
@@ -65,7 +65,7 @@ const NavEditor = () => {
           </ListItemButton>
         </Link>
         <Link
-          to={"/reportero/CrearNoticia"}
+          to={"/editor/CrearNoticia"}
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <ListItemButton

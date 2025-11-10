@@ -5,14 +5,11 @@ import Divider from "@mui/material/Divider";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import ApartmentIcon from "@mui/icons-material/Apartment";
-import PublicIcon from "@mui/icons-material/Public";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { LogoutUser } from "../../Data/Login";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const NavReportero = () => {
   const navigate = useNavigate();
@@ -21,84 +18,133 @@ const NavReportero = () => {
     LogoutUser();
     navigate("/login");
   };
+
   return (
     <Box
       sx={{
         width: "100%",
-        height: "100vh",
+        height: "86.4vh",
         backgroundColor: "#0a3d62",
         color: "white",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        paddingY: 2,
+        overflow: "hidden", // Elimina scrollbars
       }}
       role="presentation"
     >
       {/* ---- Sección principal ---- */}
-      <List>
-        <ListItemText
-          sx={{
-            "& .MuiListItemText-primary": {
-              marginLeft: 5,
-              fontSize: 25,
-              fontWeight: "bold",
-            },
-          }}
-          primary="Reportero"
-        />
-        <Divider sx={{ backgroundColor: "white", opacity: 0.3 }} />
-        <br />
+      <Box>
+        <Box sx={{ padding: "24px 20px 16px" }}>
+          <ListItemText
+            sx={{
+              "& .MuiListItemText-primary": {
+                fontSize: 28,
+                fontWeight: "bold",
+                letterSpacing: "-0.5px",
+              },
+            }}
+            primary="Reportero"
+          />
+        </Box>
 
-        <Link
-          to={"/reportero/Historial"}
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
-          <ListItemButton
-            sx={{
-              "&:hover": { backgroundColor: "#1a3a6b" },
-              textDecoration: "n",
-            }}
+        <Divider sx={{ backgroundColor: "rgba(255, 255, 255, 0.2)", mb: 2 }} />
+
+        <List sx={{ padding: "0 8px" }}>
+          <Link
+            to="/reportero/Historial"
+            style={{ textDecoration: "none", color: "inherit" }}
           >
-            <ListItemIcon sx={{ color: "white", minWidth: 40 }}>
-              <ManageSearchIcon sx={{ fontSize: 30 }} />
-            </ListItemIcon>
-            <ListItemText primary="Historial" />
-          </ListItemButton>
-        </Link>
-        <Link
-          to={"/reportero/CrearNoticia"}
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
-          <ListItemButton
-            sx={{
-              "&:hover": { backgroundColor: "#1a3a6b" },
-            }}
+            <ListItemButton
+              sx={{
+                borderRadius: "8px",
+                mb: 1,
+                padding: "12px 16px",
+                "&:hover": {
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                },
+                "&:active": {
+                  backgroundColor: "rgba(255, 255, 255, 0.15)",
+                },
+              }}
+            >
+              <ListItemIcon sx={{ color: "white", minWidth: 48 }}>
+                <ManageSearchIcon sx={{ fontSize: 28 }} />
+              </ListItemIcon>
+              <ListItemText 
+                primary="Historial"
+                sx={{
+                  "& .MuiListItemText-primary": {
+                    fontSize: 16,
+                    fontWeight: 500,
+                  },
+                }}
+              />
+            </ListItemButton>
+          </Link>
+
+          <Link
+            to="/reportero/CrearNoticia"
+            style={{ textDecoration: "none", color: "inherit" }}
           >
-            <ListItemIcon sx={{ color: "white", minWidth: 40 }}>
-              <NewspaperIcon sx={{ fontSize: 30 }} />
-            </ListItemIcon>
-            <ListItemText primary="Nueva Noticia" />
-          </ListItemButton>
-        </Link>
-      </List>
+            <ListItemButton
+              sx={{
+                borderRadius: "8px",
+                mb: 1,
+                padding: "12px 16px",
+                "&:hover": {
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                },
+                "&:active": {
+                  backgroundColor: "rgba(255, 255, 255, 0.15)",
+                },
+              }}
+            >
+              <ListItemIcon sx={{ color: "white", minWidth: 48 }}>
+                <NewspaperIcon sx={{ fontSize: 28 }} />
+              </ListItemIcon>
+              <ListItemText 
+                primary="Nueva Noticia"
+                sx={{
+                  "& .MuiListItemText-primary": {
+                    fontSize: 16,
+                    fontWeight: 500,
+                  },
+                }}
+              />
+            </ListItemButton>
+          </Link>
+        </List>
+      </Box>
 
       {/* ---- Botón de cerrar sesión ---- */}
-      <Box>
-        <Divider sx={{ backgroundColor: "white", opacity: 0.3, mb: 1 }} />
+      <Box sx={{ padding: "8px" }}>
+        <Divider sx={{ backgroundColor: "rgba(255, 255, 255, 0.2)", mb: 1 }} />
         <ListItemButton
           sx={{
-            "&:hover": { backgroundColor: "#c62828" },
-            color: "white",
+            borderRadius: "8px",
+            padding: "12px 16px",
+            "&:hover": {
+              backgroundColor: "#c62828",
+            },
+            "&:active": {
+              backgroundColor: "#b71c1c",
+            },
           }}
-          onClick={() => {
-            cerrarSeccion();
-          }}
+          onClick={cerrarSeccion}
         >
-          <ListItemIcon sx={{ color: "white", minWidth: 40 }}>
-            <LogoutIcon sx={{ fontSize: 30 }} />
+          <ListItemIcon sx={{ color: "white", minWidth: 48 }}>
+            <LogoutIcon sx={{ fontSize: 28 }} />
           </ListItemIcon>
-          <ListItemText primary="Cerrar sesión" />
+          <ListItemText 
+            primary="Cerrar sesión"
+            sx={{
+              "& .MuiListItemText-primary": {
+                fontSize: 16,
+                fontWeight: 500,
+              },
+            }}
+          />
         </ListItemButton>
       </Box>
     </Box>

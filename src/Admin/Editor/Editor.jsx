@@ -2,6 +2,9 @@ import React from 'react'
 import { useAuth } from "../../Context/Context";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavEditor from '../../Components/Nav/NavEditor';
+import CrearNoticia from "../../Pages/CrearNoticia/CrearNoticia"
+import HistorialNoticia from "../../Pages/HistorialNoticias/HistorialNoticiasEditor";
+import EditarNoticia from "../../Pages/CrearNoticia/EditarNoticiaEditor";
 import "./Editor.css"
 
 
@@ -11,7 +14,10 @@ const Editor = () => {
     <div id="containerpages">
       <div id="container">
         <Routes>
-          <Route path="/*" element={<h2>texto</h2>} />
+          <Route index element={<HistorialNoticia />} />
+          <Route path="CrearNoticia" element={<CrearNoticia/>} />
+          <Route path="Historial" element={<HistorialNoticia />} />
+          <Route path="EditarNoticia/:id" element={<EditarNoticia />} />
         </Routes>
       </div>
 

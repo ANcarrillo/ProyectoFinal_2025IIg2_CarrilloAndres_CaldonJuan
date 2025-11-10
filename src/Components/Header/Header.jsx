@@ -27,12 +27,11 @@ const Header = () => {
               <li><a href="/categoria/salud">Salud</a></li>
               <li><a href="/categoria/negocio">Negocio</a></li>
               <li><a href="/categoria/tecnologia">Tecnología</a></li>
-              <li><a href="/login">Login</a></li>
+              <li><a href="/Login">Login</a></li>
             </>
           ) : (
             // Menú para usuarios autenticados
             <>
-              <li><a href="/reportero">Panel</a></li>
               <li className="user-info">{user?.email}</li>
               
             </>
