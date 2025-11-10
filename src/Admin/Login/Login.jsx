@@ -42,7 +42,7 @@ const Login = () => {
       if (rol === "Periodista") {
         navigate("/reportero");
       } else {
-        alert("Aún no se conecta la respectiva página para este rol");
+        navigate("/editor");
       }
     } catch (error) {
       console.error("Error al iniciar sesión:", error.message);

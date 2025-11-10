@@ -13,7 +13,6 @@ const Reportero = () => {
   return (
     <div id="containerpages">
       <div id="container">
-        <h2>{user?.email}</h2>
         <Routes>
           <Route index element={<HistorialNoticia />} />
           <Route path="CrearNoticia" element={<CrearNoticia/>} />

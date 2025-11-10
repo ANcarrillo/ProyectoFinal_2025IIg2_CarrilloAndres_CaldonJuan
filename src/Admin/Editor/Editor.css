@@ -4,7 +4,6 @@
     grid-template-rows: 1fr;
     grid-template-areas: "nav main main main";
     height: 20vh;
-    background-color: aqua;
 }
 
 .navReportero{
