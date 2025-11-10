@@ -2,7 +2,7 @@
   "name": "proyecnot",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://github.com/ANcarrillo/ProyectoFinal_2025IIg2_CarrilloAndres_CaldonJuan",
+  "homepage": "https://ANcarrillo.github.io/ProyectoFinal_2025IIg2_CarrilloAndres_CaldonJuan",
   "type": "module",
   "scripts": {
     "dev": "vite",
